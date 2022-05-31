@@ -11,6 +11,7 @@ plugins {
     id 'java-library'
     id 'checkstyle'
     id 'jacoco'
+    id 'com.adarshr.test-logger' version '3.2.0'
 }
 
 group = 'hexlet.code'
@@ -53,4 +54,14 @@ jacocoTestReport {
     }
 }
 
+testlogger {
+    theme 'standard-parallel' // project level
+    slowThreshold 5000
+}
+
+test {
+    testlogger {
+        theme 'standard-parallel' // task level
+    }
+}
 
