@@ -1,6 +1,6 @@
 package hexlet.code.shemas;
 
-public class StringSchema implements Schema {
+public class StringSchema extends BaseSchema {
     private String stage = "neutral";
     private String contains = "";
     private int minLength = 0;
@@ -19,9 +19,11 @@ public class StringSchema implements Schema {
         }
     }
 
-    public void required() {
+    public StringSchema required() {
         this.stage = "required";
+        return this;
     }
+
 
     public StringSchema minLength(int length) {
         this.stage = "minLength";
