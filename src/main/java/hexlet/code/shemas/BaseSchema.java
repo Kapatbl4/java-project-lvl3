@@ -3,9 +3,12 @@ package hexlet.code.shemas;
 
 import java.util.function.Predicate;
 
-public class BaseSchema {
-    static Predicate<Object> predicate;
-    public boolean isValid(Object object) {
-        return predicate == null || predicate.test(object);
+public abstract class BaseSchema {
+    private static Predicate<Object> predicate;
+    public abstract boolean isValid(Object object);
+
+    public static void setPredicate(Predicate<Object> p) {
+        BaseSchema.predicate = p;
     }
+
 }

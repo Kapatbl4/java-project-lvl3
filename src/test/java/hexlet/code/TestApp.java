@@ -34,13 +34,20 @@ public class TestApp {
 
         assertFalse(schema.isValid("what does the fox say"));
 
-        assertTrue(schema.minLength(5).isValid("hexlet"));
+        final int length = 5;
+        assertTrue(schema.minLength(length).isValid("hexlet"));
         assertFalse(schema.isValid("USA"));
     }
 
     @Test
     public void testNumberSchema() {
         Validator v = new Validator();
+
+        // creating numbers for testing
+        final int four = 4;
+        final int five = 5;
+        final int ten = 10;
+        final int eleven = 11;
 
         NumberSchema schema = v.number();
 
@@ -52,18 +59,19 @@ public class TestApp {
         schema.required();
 
         assertFalse(schema.isValid(null)); // false
-        assertTrue(schema.isValid(10)); // true
+
+        assertTrue(schema.isValid(ten)); // true
         assertFalse(schema.isValid("5")); // false
 
-        assertTrue(schema.positive().isValid(10)); // true
-        assertFalse(schema.isValid(-10)); // false
+        assertTrue(schema.positive().isValid(ten)); // true
+        assertFalse(schema.isValid(-ten)); // false
 
-        schema.range(5, 10);
+        schema.range(five, ten);
 
-        assertTrue(schema.isValid(5)); // true
-        assertTrue(schema.isValid(10)); // true
-        assertFalse(schema.isValid(4)); // false
-        assertFalse(schema.isValid(11)); // false
+        assertTrue(schema.isValid(five)); // true
+        assertTrue(schema.isValid(ten)); // true
+        assertFalse(schema.isValid(four)); // false
+        assertFalse(schema.isValid(eleven)); // false
     }
 
     @Test
@@ -95,7 +103,9 @@ public class TestApp {
 
         MapSchema schema = v.map();
 
-// shape - позволяет описывать валидацию для значений объекта Map по ключам.
+        // creating numbers for testing
+        final int hundred = 100;
+        final int five = 5;
         Map<String, BaseSchema> schemas = new HashMap<>();
         schemas.put("name", v.string().required());
         schemas.put("age", v.number().positive());
@@ -103,7 +113,7 @@ public class TestApp {
 
         Map<String, Object> human1 = new HashMap<>();
         human1.put("name", "Kolya");
-        human1.put("age", 100);
+        human1.put("age", hundred);
         assertTrue(schema.isValid(human1)); // true
 
         Map<String, Object> human2 = new HashMap<>();
@@ -118,9 +128,9 @@ public class TestApp {
 
         Map<String, Object> human4 = new HashMap<>();
         human4.put("name", "Valya");
-        human4.put("age", -5);
+        human4.put("age", -five);
         assertFalse(schema.isValid(human4));
 
-        assertFalse(schema.isValid("zhopa"));// false
+        assertFalse(schema.isValid("zhopa")); // false
     }
 }
