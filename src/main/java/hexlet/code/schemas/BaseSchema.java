@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 
 public abstract class BaseSchema {
     private List<Predicate<Object>> predicateList = new ArrayList<>();
-    final public boolean isValid(Object object) {
+    public final boolean isValid(Object object) {
         if (predicateList.size() == 0) {
             return true;
         }
