@@ -33,10 +33,16 @@ public class TestApp {
         assertFalse(schema.contains("whatthe").isValid("what does the fox say")); // false
 
         assertFalse(schema.isValid("what does the fox say"));
+    }
 
+    @Test
+    public void testMinLengthOfStringSchema() {
+        Validator v = new Validator();
+        StringSchema schema1 = v.string();
         final int length = 5;
-        assertTrue(schema.minLength(length).isValid("hexlet"));
-        assertFalse(schema.isValid("USA"));
+        schema1.required();
+        assertTrue(schema1.minLength(length).isValid("what does the fox say"));
+        assertFalse(schema1.isValid("USA"));
     }
 
     @Test
@@ -72,6 +78,8 @@ public class TestApp {
         assertTrue(schema.isValid(ten)); // true
         assertFalse(schema.isValid(four)); // false
         assertFalse(schema.isValid(eleven)); // false
+
+        assertFalse(schema.isValid(null));
     }
 
     @Test
