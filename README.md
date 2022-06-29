@@ -11,7 +11,7 @@
 #### String validate methods are:
 * required() — any not empty string;
 * minLength(int length) — string length is equal or more than input;
-* * contains(String input) — string contains input string.
+* contains(String input) — string contains input string.
 
 ```java
 Validator v = new Validator();
