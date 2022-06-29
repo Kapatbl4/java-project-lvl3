@@ -8,9 +8,6 @@ import java.util.function.Predicate;
 public abstract class BaseSchema {
     private List<Predicate<Object>> predicateList = new ArrayList<>();
     public final boolean isValid(Object object) {
-        if (predicateList.size() == 0) {
-            return true;
-        }
         for (Predicate<Object> predicate : predicateList) {
             if (!predicate.test(object)) {
                 return false;
