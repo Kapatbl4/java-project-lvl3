@@ -9,9 +9,9 @@
 ### Data validator is a library for validating strings, numbers and maps.
 
 #### String validate methods are:
-    * required() — any not empty string;
-    * minLength(int length) — string length is equal or more than input;
-    * contains(String input) — string contains input string.
+* required() — any not empty string;
+* minLength(int length) — string length is equal or more than input;
+* * contains(String input) — string contains input string.
 
 ```java
 Validator v = new Validator();
@@ -35,9 +35,9 @@ schema.isValid("what does the fox say"); // false
 ```
 
 #### Number validate methods are:
-    * required() — any number;
-    * positive() — number is positive;
-    * range(int begin, int end) — number is between begin and end (included).
+* required() — any number;
+* positive() — number is positive;
+* range(int begin, int end) — number is between begin and end (included).
 ```java
 Validator v = new Validator();
 
@@ -63,9 +63,9 @@ schema.isValid(11); // false
 ```
 
 #### Map validate methods are:
-    * required() — any Map;
-    * sizeof(int size) — size of map is equal to input;
-    * shape(Map<String, BaseSchema> schemas) — define the keys of the object and the schemas for said keys.
+* required() — any Map;
+* sizeof(int size) — size of map is equal to input;
+* shape(Map<String, BaseSchema> schemas) — define the keys of the object and the schemas for said keys.
 
 ```java
 Validator v = new Validator();
